@@ -1,0 +1,25 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+
+    <!-- 整个分布式系统中的唯一名称， 用作计算依赖关系； owner：是谁来管理 -->
+    <dubbo:application name="order-provider" owner="mac" logger="log4j" />
+
+    <!-- Dubbo服务所要暴露服务地址所对应的服务中心 -->
+    <dubbo:registry address="N/A" />
+
+    <!-- 当前服务所使用的协议 -->
+    <dubbo:protocol name="dubbo" port="20880" />
+
+    <!-- 服务发布的配置  需要暴露出去的服务接口 -->
+    <dubbo:service
+            interface="com.mac.dubbo.order.IOrderServices"
+            ref="orderService"/>
+
+    <!-- orderService接口的实现 -->
+    <bean id="orderService" class="com.mac.dubbo.order.OrderServiceImpl"/>
+</beans>

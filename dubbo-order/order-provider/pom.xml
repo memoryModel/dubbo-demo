@@ -28,6 +28,22 @@
             <version>4.11</version>
             <scope>test</scope>
         </dependency>
+
+         <dependency>
+            <groupId>com.mac.dubbo.order</groupId>
+            <artifactId>order-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.sgroschupf</groupId>
+            <artifactId>zkclient</artifactId>
+            <version>0.1</version>
+        </dependency>
     </dependencies>
 
     <build>

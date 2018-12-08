@@ -1,0 +1,19 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+
+    <!-- 整个分布式系统中的唯一名称， 用作计算依赖关系； owner：是谁来管理 -->
+    <dubbo:application name="order-provider" owner="mac" />
+
+    <!-- Dubbo服务所要暴露服务地址所对应的服务中心 -->
+    <dubbo:registry address="N/A" />
+
+    <!-- 生成一个服务的远程代理 -->
+    <dubbo:reference id="orderServices" interface="com.mac.dubbo.order.IOrderServices"
+                     url="dubbo://192.168.0.100:20880/com.mac.dubbo.order.IOrderServices"/>
+
+</beans>
