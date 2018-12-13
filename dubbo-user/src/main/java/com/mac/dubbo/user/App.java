@@ -1,5 +1,6 @@
 package com.mac.dubbo.user;
 
+
 import com.mac.dubbo.order.DoOrderRequest;
 import com.mac.dubbo.order.DoOrderResponse;
 import com.mac.dubbo.order.IOrderServices;
@@ -14,7 +15,8 @@ public class App
     public static void main( String[] args )
     {
 
-        ClassPathXmlApplicationContext content =
+        ClassPathXmlApplicationContext
+                content =
                 new ClassPathXmlApplicationContext("order-consumer.xml");
 
 

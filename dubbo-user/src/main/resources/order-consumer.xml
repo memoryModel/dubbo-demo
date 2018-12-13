@@ -6,14 +6,27 @@
         http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
 
+    <!-- 点对点进行服务消费 -->
     <!-- 整个分布式系统中的唯一名称， 用作计算依赖关系； owner：是谁来管理 -->
-    <dubbo:application name="order-provider" owner="mac" />
+    <!--<dubbo:application name="order-consumer" />-->
 
     <!-- Dubbo服务所要暴露服务地址所对应的服务中心 -->
-    <dubbo:registry address="N/A" />
+    <!--<dubbo:registry address="N/A" />-->
 
     <!-- 生成一个服务的远程代理 -->
-    <dubbo:reference id="orderServices" interface="com.mac.dubbo.order.IOrderServices"
-                     url="dubbo://192.168.0.100:20880/com.mac.dubbo.order.IOrderServices"/>
+    <!--<dubbo:reference id="orderServices" interface="com.mac.dubbo.order.IOrderServices"
+                        url="dubbo://localhost:20882"/>-->
+
+    <!-- 分布式系统中的唯一名称 -->
+    <dubbo:application name="dubbo-consumer"/>
+
+    <!-- 从zookeeper上进行服务消费 -->
+    <dubbo:registry protocol="zookeeper" address="172.16.93.101:2181,172.16.93.102:2181,172.16.93.103:2181"/>
+
+    <!-- 过期时间 -->
+    <dubbo:consumer timeout="60000"/>
+
+    <!-- 服务的远程代理 -->
+    <dubbo:reference id="orderServices" interface="com.mac.dubbo.order.IOrderServices"/>
 
 </beans>
