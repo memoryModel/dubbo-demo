@@ -1,5 +1,9 @@
 package com.mac.dubbo.order;
 
+
+import org.springframework.stereotype.Service;
+
+
 public class OrderServiceImpl implements IOrderServices{
 
     @Override
