@@ -1,0 +1,22 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!-- 分布式系统中的唯一名称 -->
+    <dubbo:application name="dubbo-consumer" />
+
+    <!-- 从zookeeper上进行服务消费 -->
+    <dubbo:registry protocol="zookeeper" address="172.16.93.101:2181,172.16.93.102:2181,172.16.93.103:2181" group="dubbo_dev"/>
+
+    <!-- 过期时间 -->
+    <dubbo:consumer timeout="60000" />
+
+    <!-- 订单服务的远程代理 -->
+    <dubbo:reference id="orderService" interface="com.mac.dubbo.erp.baby.service.order.OrderService" />
+
+    <!-- 客户服务的远程代理 -->
+    <dubbo:reference id="customerService" interface="com.mac.dubbo.erp.baby.service.customer.CustomerService" />
+</beans>
