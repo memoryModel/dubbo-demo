@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mac.dubbo.erp.baby.mapper.order.OrderMapper" >
+
+    <resultMap id="BaseResultMap" type="com.mac.dubbo.erp.baby.model.order.Order" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="order_no" property="orderNo" jdbcType="VARCHAR" />
+        <result column="money" property="money" jdbcType="DECIMAL" />
+        <result column="employee_no" property="employeeNo" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+      a.id, a.order_no, a.money, a.customer_id
+    </sql>
+
+    <!-- 根据员工号查询订单总金额 -->
+    <select id="selectSumOrderByCustomerId" resultType="com.mac.dubbo.erp.baby.model.order.Order">
+        select
+         sum(a.money) as orderMoneySum
+        from baby_order a where customer_id = #{customerId, jdbcType=VARCHAR}
+    </select>
+
+    <!-- 根据员工好查询订单总个数 -->
+    <select id="selectOrderCountByCustomerId" resultType="com.mac.dubbo.erp.baby.model.order.Order">
+        select
+         count(a.id) as orderCount
+        from baby_order a where customer_id = #{customerId, jdbcType=VARCHAR}
+    </select>
+
+    <!-- 创建订单 -->
+    <insert id="saveOrder" parameterType="com.mac.dubbo.erp.baby.model.order.Order">
+        insert into baby_order(id, order_no, money, customer_id) values (#{id}, #{orderNo}, #{money}, #{customerId})
+    </insert>
+</mapper>
