@@ -1,0 +1,11 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 订单服务提供方 -->
+    <import resource="classpath:conf/customer-provider.xml" />
+    <!-- 整合mybatis -->
+    <import resource="classpath:conf/spring-mybatis.xml" />
+
+</beans>
